@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Gustavo",
-  "description": "🦉 Gustavo e legal e top, recomendo.",
+  "name": "Pandora",
+  "description": "Assim como na mitologia, desvenda mistérios e traz à tona a esperança em meio às adversidades, inspirando-nos a explorar o desconhecido.",
   "version": "1.1.0",
   "author": "Gustavo Francisco dos Santos <gustavofrancisco072@gmail.com>",
   "icons": {
-    "16": "images/edilson16.png",
-    "32": "images/edilson32.png",
-    "48": "images/edilson32.png"
+    "16": "images/pandora16.png",
+    "32": "images/pandora32.png",
+    "48": "images/pandora32.png"
   },
   "chrome_url_overrides": {
     "newtab": "src/index.html"
