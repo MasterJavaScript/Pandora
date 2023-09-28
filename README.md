@@ -30,4 +30,4 @@
 
 ## 📝 License
 
-This project is licensed under the GPL-3.0 License - See the [LICENSE](https://github.com/kauefraga/fukurou/blob/main/LICENSE) for more information.
+This project is licensed under the GPL-3.0 License.
