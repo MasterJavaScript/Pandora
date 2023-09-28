@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Programando...</title>
+  <link type='image/png' rel='icon' href='../images/icon-32.png' />
+  <link rel='stylesheet' href='./style.css' />
+</head>
+<body>
+  <div id='greetings'>
+    <h1 id='clock'></h1>
+    <p id='hello'></p>
+
+    <a id='arrow-down' href='#notepad'>
+      <svg xmlns='https://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24'><path fill='currentColor' d='m12 15.4l-6-6L7.4 8l4.6 4.6L16.6 8L18 9.4l-6 6Z'/></svg>
+    </a>
+  </div>
+
+  <main id='notepad'>
+    <input id='title' type='text' name='title' maxlength='50' autocapitalize='on' placeholder='Nota sem título' />
+
+    <div class='separator'></div>
+
+    <textarea id='text' name='text' placeholder='Seu texto vai aqui...'></textarea>
+
+    <div class='separator'></div>
+
+    <footer id='notepad-footer'>
+      <span id='created-at'></span>
+
+      <div id='actions'>
+        <button id='save'>Salvar</button>
+        <button id='delete'>Apagar</button>
+        <button id='download'>
+          <svg xmlns='https://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path fill='currentColor' d='M26 24v4H6v-4H4v4a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-4zm0-10l-1.41-1.41L17 20.17V2h-2v18.17l-7.59-7.58L6 14l10 10l10-10z'/></svg>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <script src='./scripts/clock.js'></script>
+  <script src='./scripts/notepad.js'></script>
+</body>
+</html>
