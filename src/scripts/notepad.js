@@ -120,16 +120,15 @@ function download(data, filename, type) {
 downloadButton.addEventListener("click", (event) => {
   const title = document.getElementById("title");
   const text = document.getElementById("text");
-  const createdAt = document.getElementById("created-at");
 
   if (!title.value || !text.value) {
     alert("Escreva um título e/ou um texto para fazer o download.");
     return;
   }
 
-  const formattedText = `${title.value} (${createdAt.innerText})\n\n${text.value}`;
+  const formattedText = `${text.value}`;
 
-  download(formattedText, "note.txt", "text/plain");
+  download(formattedText, title.value, "text/plain");
 });
 
 const importButton = document.getElementById("import");
