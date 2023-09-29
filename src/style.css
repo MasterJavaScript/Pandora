@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
 :root {
-  --bg-color: #282A36;
-  --gray: #6272A4;
-  --main-color: #F8F8F2;
+  --bg-color: #282a36;
+  --gray: #6272a4;
+  --main-color: #f8f8f2;
 }
 
 * {
@@ -20,7 +19,7 @@ body {
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   color: var(--main-color);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -50,7 +49,6 @@ body::-webkit-scrollbar {
 }
 /* Greetings */
 
-
 /* Notepad */
 #notepad {
   height: 100%;
@@ -72,7 +70,7 @@ body::-webkit-scrollbar {
   color: var(--main-color);
   font-size: 1.75rem;
   font-weight: bold;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 #title:focus {
@@ -87,7 +85,7 @@ body::-webkit-scrollbar {
   border: none;
   background-color: transparent;
   color: var(--main-color);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.25rem;
   font-weight: normal;
 }

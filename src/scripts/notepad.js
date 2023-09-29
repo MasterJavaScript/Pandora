@@ -8,8 +8,8 @@
 function prettifyDate(date) {
   const rawDate = new Date(date);
 
-  const day = rawDate.getDate().toString().padStart(2, '0');
-  const month = (rawDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = rawDate.getDate().toString().padStart(2, "0");
+  const month = (rawDate.getMonth() + 1).toString().padStart(2, "0");
   const year = rawDate.getFullYear();
 
   return `${day}/${month}/${year}`;
@@ -20,10 +20,10 @@ function loadNote(id) {
 
   if (!json) {
     return {
-      title: '',
-      text: '',
+      title: "",
+      text: "",
       createdAt: new Date(),
-    }
+    };
   }
 
   const data = JSON.parse(json);
@@ -36,9 +36,9 @@ function loadNote(id) {
 }
 
 function renderNote(note) {
-  const title = document.getElementById('title');          // título da nota
-  const text = document.getElementById('text');            // conteúdo da nota
-  const createdAt = document.getElementById('created-at'); // data de criação
+  const title = document.getElementById("title"); // título da nota
+  const text = document.getElementById("text"); // conteúdo da nota
+  const createdAt = document.getElementById("created-at"); // data de criação
 
   title.value = note.title;
   text.value = note.text;
@@ -47,60 +47,61 @@ function renderNote(note) {
 
 renderNote(loadNote(1));
 
-const saveButton = document.getElementById('save');
+const saveButton = document.getElementById("save");
 
 // Stores note in the local storage
-saveButton.addEventListener('click', (event) => {
-  localStorage.setItem(1, JSON.stringify({
-    title: title.value,
-    text: text.value,
-    createdAt: new Date(),
-  }));
+saveButton.addEventListener("click", (event) => {
+  localStorage.setItem(
+    1,
+    JSON.stringify({
+      title: title.value,
+      text: text.value,
+      createdAt: new Date(),
+    })
+  );
 
-  saveButton.innerText = 'Salvo!';
-  saveButton.style.color = 'red';
+  saveButton.innerText = "Salvo!";
+  saveButton.style.color = "red";
 
   setTimeout(() => {
-    saveButton.removeAttribute('style');
-    saveButton.innerText = 'Salvar';
+    saveButton.removeAttribute("style");
+    saveButton.innerText = "Salvar";
   }, 1000 * 5);
 });
 
+const deleteButton = document.getElementById("delete");
 
-const deleteButton = document.getElementById('delete');
+deleteButton.addEventListener("click", (event) => {
+  const title = document.getElementById("title");
+  const text = document.getElementById("text");
+  const createdAt = document.getElementById("created-at");
 
-deleteButton.addEventListener('click', (event) => {
-  const title = document.getElementById('title');
-  const text = document.getElementById('text');
-  const createdAt = document.getElementById('created-at');
-
-  title.value = '';
-  text.value = '';
+  title.value = "";
+  text.value = "";
   createdAt.innerText = prettifyDate(new Date());
 
   localStorage.removeItem(1);
 
-  deleteButton.innerText = 'Apagado!';
-  deleteButton.style.color = 'red';
+  deleteButton.innerText = "Apagado!";
+  deleteButton.style.color = "red";
 
   setTimeout(() => {
-    deleteButton.removeAttribute('style');
-    deleteButton.innerText = 'Apagar';
+    deleteButton.removeAttribute("style");
+    deleteButton.innerText = "Apagar";
   }, 1000 * 5);
 });
 
-const downloadButton = document.getElementById('download');
+const downloadButton = document.getElementById("download");
 
 function download(data, filename, type) {
-  const file = new Blob(
-    [data],
-    { type: type },
-  );
+  const file = new Blob([data], { type: type });
 
-  if (window.navigator.msSaveOrOpenBlob) { // IE10+
+  if (window.navigator.msSaveOrOpenBlob) {
+    // IE10+
     window.navigator.msSaveOrOpenBlob(file, filename);
-  } else { // Others
-    const a = document.createElement('a');
+  } else {
+    // Others
+    const a = document.createElement("a");
     const url = URL.createObjectURL(file);
 
     a.href = url;
@@ -116,17 +117,40 @@ function download(data, filename, type) {
   }
 }
 
-downloadButton.addEventListener('click', (event) => {
-  const title = document.getElementById('title');
-  const text = document.getElementById('text');
-  const createdAt = document.getElementById('created-at');
+downloadButton.addEventListener("click", (event) => {
+  const title = document.getElementById("title");
+  const text = document.getElementById("text");
+  const createdAt = document.getElementById("created-at");
 
   if (!title.value || !text.value) {
-    alert('Escreva um título e/ou um texto para fazer o download.');
+    alert("Escreva um título e/ou um texto para fazer o download.");
     return;
   }
 
   const formattedText = `${title.value} (${createdAt.innerText})\n\n${text.value}`;
 
-  download(formattedText, 'note.txt', 'text/plain');
+  download(formattedText, "note.txt", "text/plain");
+});
+
+const importButton = document.getElementById("import");
+const fileInput = document.getElementById("fileInput");
+const titleInput = document.getElementById("title");
+
+importButton.addEventListener("click", (event) => {
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", (event) => {
+  const selectedFile = fileInput.files[0];
+  if (selectedFile) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const fileContent = e.target.result;
+      titleInput.value = selectedFile.name.replace(/\.[^/.]+$/, "");
+      document.getElementById("text").value = fileContent;
+    };
+
+    reader.readAsText(selectedFile);
+  }
 });

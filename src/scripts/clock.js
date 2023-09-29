@@ -1,20 +1,20 @@
-const clock = document.getElementById('clock');
-const hello = document.getElementById('hello');
+const clock = document.getElementById("clock");
+const hello = document.getElementById("hello");
 
 function renderHello() {
   const date = new Date();
   const hours = date.getHours();
 
   if (hours <= 12) {
-    hello.innerText = 'Bom dia.';
+    hello.innerText = "Bom dia.";
   }
 
   if (hours > 12 && hours <= 18) {
-    hello.innerText = 'Boa tarde.';
+    hello.innerText = "Boa tarde.";
   }
 
   if (hours > 18) {
-    hello.innerText = 'Boa noite.';
+    hello.innerText = "Boa noite.";
   }
 }
 
